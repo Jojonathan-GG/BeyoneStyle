@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { BackToTop } from '@/components/ui/back-to-top';
+import { RevealObserver } from '@/components/ui/reveal';
 import './globals.css';
 
 const inter = Inter({
@@ -24,7 +26,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
-      <body className="bg-surface font-sans text-ink antialiased">{children}</body>
+      <body className="bg-surface font-sans text-ink antialiased">
+        {children}
+        <RevealObserver />
+        <BackToTop />
+      </body>
     </html>
   );
 }

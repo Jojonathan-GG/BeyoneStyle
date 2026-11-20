@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { Marquee } from '@/components/ui/marquee';
 
@@ -27,17 +28,27 @@ const products = [
   { slug: 'organic-cotton-tee', name: 'Organic Cotton Tee', price: '$48.00', compareAt: null },
 ];
 
+function reveal(delay = 0): CSSProperties {
+  return { '--reveal-delay': `${delay}ms` } as CSSProperties;
+}
+
 export default function HomePage() {
   return (
     <main>
       <Marquee items={announcements} ariaLabel="Store announcements" />
 
       <section className="px-6 pb-16 pt-20 md:px-10 md:pb-24 md:pt-28">
-        <p className="text-eyebrow text-ink-subtle">BeyoneStyle — Spring 2026</p>
-        <h1 className="text-display-xl mt-6 max-w-5xl text-balance">
+        <p className="text-eyebrow text-ink-muted" data-reveal style={reveal(0)}>
+          BeyoneStyle — Spring 2026
+        </p>
+        <h1 className="text-display-xl mt-6 max-w-5xl text-balance" data-reveal style={reveal(80)}>
           Considered clothing, made to last.
         </h1>
-        <p className="text-body-lg text-ink-muted mt-8 max-w-xl">
+        <p
+          className="text-body-lg text-ink-muted mt-8 max-w-xl"
+          data-reveal
+          style={reveal(160)}
+        >
           A quiet wardrobe of natural fibres, precise cuts, and pieces designed to be worn for
           years rather than seasons. Made in small runs, with full traceability.
         </p>
@@ -46,15 +57,17 @@ export default function HomePage() {
       <Marquee items={categories} variant="category" speed={52} ariaLabel="Shop by category" />
 
       <section className="px-6 py-16 md:px-10 md:py-24">
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-4" data-reveal>
           <h2 className="text-h2">Type scale</h2>
           <p className="text-small text-ink-subtle">Plus Jakarta Sans display · Inter text</p>
         </div>
         <dl className="mt-10 border-t border-border">
-          {typeSpecimens.map((specimen) => (
+          {typeSpecimens.map((specimen, index) => (
             <div
               key={specimen.label}
               className="grid gap-2 border-b border-border py-6 md:grid-cols-[10rem_1fr] md:items-baseline md:gap-8"
+              data-reveal
+              style={reveal(index * 50)}
             >
               <dt className="text-eyebrow text-ink-subtle">{specimen.label}</dt>
               <dd className={specimen.className}>{specimen.sample}</dd>
@@ -64,15 +77,17 @@ export default function HomePage() {
       </section>
 
       <section className="px-6 py-16 md:px-10 md:py-24">
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-4" data-reveal>
           <h2 className="text-h2">Price numerals</h2>
           <p className="text-small text-ink-subtle">Tabular, lining figures</p>
         </div>
         <div className="mt-10 border-t border-border">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <div
               key={product.slug}
               className="flex items-baseline justify-between gap-6 border-b border-border py-5"
+              data-reveal
+              style={reveal(index * 60)}
             >
               <span className="text-body">{product.name}</span>
               <span className="flex items-baseline gap-3">
@@ -89,13 +104,18 @@ export default function HomePage() {
       </section>
 
       <section className="px-6 py-16 md:px-10 md:py-24">
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-4" data-reveal>
           <h2 className="text-h2">The edit</h2>
           <p className="text-small text-ink-subtle">Hover to preview</p>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <article key={product.slug} className="group">
+          {products.map((product, index) => (
+            <article
+              key={product.slug}
+              className="group"
+              data-reveal
+              style={reveal(index * 90)}
+            >
               <div className="overflow-hidden rounded-md bg-surface-muted">
                 <div className="aspect-[4/5]">
                   <div className="transition-slow flex h-full w-full items-center justify-center bg-surface-sunken group-hover:scale-[1.03]">
@@ -117,7 +137,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="border-t border-border px-6 py-10 md:px-10">
+      <footer className="border-t border-border px-6 py-10 md:px-10" data-reveal>
         <p className="text-small text-ink-subtle">
           BeyoneStyle — considered clothing, made in small runs.
         </p>

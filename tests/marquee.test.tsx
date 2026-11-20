@@ -33,6 +33,11 @@ describe('Marquee', () => {
     expect(track?.style.getPropertyValue('--marquee-duration')).toBe('38s');
   });
 
+  it('uses the dark surface for the announcement strip', () => {
+    const { container } = render(<Marquee items={['A']} />);
+    expect(container.firstElementChild).toHaveClass('bg-surface-muted');
+  });
+
   it('renders nothing when there are no items', () => {
     const { container } = render(<Marquee items={[]} />);
     expect(container).toBeEmptyDOMElement();

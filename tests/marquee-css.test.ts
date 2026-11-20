@@ -10,10 +10,20 @@ describe('marquee css', () => {
     expect(compact).toContain('translate3d(-50%, 0, 0)');
   });
 
-  it('pauses on hover and keyboard focus', () => {
-    expect(compact).toContain('.marquee:hover .marquee-track');
-    expect(compact).toContain('.marquee:focus-within .marquee-track');
-    expect(compact).toContain('animation-play-state: paused');
+  it('never pauses the loop on hover or focus', () => {
+    expect(compact).not.toContain('animation-play-state: paused');
+  });
+
+  it('fades items at both edges of the viewport', () => {
+    expect(compact).toContain(
+      'mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent)',
+    );
+  });
+
+  it('keeps items at full opacity and brightens a hovered item', () => {
+    expect(compact).not.toContain('opacity: 0.55');
+    expect(compact).toContain('.marquee-item:hover');
+    expect(compact).toContain('text-shadow: 0 0 18px rgba(244, 244, 239, 0.45)');
   });
 
   it('falls back to a static, natively scrollable row for reduced motion', () => {

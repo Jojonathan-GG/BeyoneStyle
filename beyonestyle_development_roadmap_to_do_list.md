@@ -43,7 +43,7 @@ Tambahkan file aturan konteks untuk OpenCode di direktori utama proyek (`.openco
   - [ ] Set up path aliases (`@/*`).
   - [ ] Configure ESLint, Prettier, and Git hooks (Husky + lint-staged).
 - [ ] **1.2 Design Tokens & Theme Setup**
-  - [x] Define light-first editorial token palette (surfaces `#ffffff` / `#f7f7f4` / `#efefea`, ink `#111110`, hairline `#e4e4dd`); dark `#0d0d0d` + neon direction deferred.
+  - [x] Define dark-first editorial token palette (surfaces `#0d0d0d` / `#141413` / `#1b1b19`, ink `#f4f4ef`, hairlines `#2a2a25` / `#3d3d36`); neon accent deferred.
   - [x] Set up custom typography (Plus Jakarta Sans display / Inter text, tabular numerals for prices).
   - [ ] Install Shadcn UI base components (`Button`, `Dialog`, `Sheet`, `DropdownMenu`, `Drawer`).
 

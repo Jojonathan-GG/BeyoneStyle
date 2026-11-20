@@ -146,3 +146,24 @@ lib/utils.ts              cn() helper (no dependency)
 - Whether the marquee speed defaults feel right at real viewport widths.
 - Dark theme tokens and a brand accent, in a later pass.
 - Adding Shadcn components on top of these tokens.
+
+## Direction Change — 2026-11-20 (user request)
+
+The user overrode the light-first direction after seeing the first build. These
+points supersede the corresponding statements above:
+
+- **Dark-first surface.** `#0d0d0d` page, `#141413` muted, `#1b1b19` sunken,
+  ink `#f4f4ef`, hairlines `#2a2a25` / `#3d3d36`. The neon accent stays deferred.
+- **Marquee never pauses.** Hover and focus no longer stop the track; the loop is
+  continuous. The viewport is edge-masked (transparent -> opaque by 12% -> opaque
+  to 88% -> transparent), so items fade in from the right, read at full colour in
+  the middle, and fade out at the left.
+- **Hover brightens.** A hovered item goes to pure white with a soft 18px glow.
+- **Scroll reveals.** `[data-reveal]` elements fade and rise 24px over 700ms once
+  they intersect, with optional `--reveal-delay` stagger. The behaviour is gated
+  by `@media (scripting: enabled)` so no-JS visitors see everything, and is
+  disabled under `prefers-reduced-motion`.
+- **Branded "N" control.** The Next.js dev badge is disabled and replaced by a
+  fixed bottom-left "N" back-to-top button that scales to 1.1 on hover.
+- **Demo page.** The demo now uses the dark palette and the reveal system on
+  every section, including the type specimens, price rows, and product cards.

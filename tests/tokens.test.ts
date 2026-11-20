@@ -6,15 +6,15 @@ const compact = readFileSync(resolve(process.cwd(), 'app/globals.css'), 'utf8').
 
 describe('design tokens', () => {
   it.each([
-    ['--color-surface', '#ffffff'],
-    ['--color-surface-muted', '#f7f7f4'],
-    ['--color-surface-sunken', '#efefea'],
-    ['--color-ink', '#111110'],
-    ['--color-ink-muted', '#5c5c56'],
+    ['--color-surface', '#0d0d0d'],
+    ['--color-surface-muted', '#141413'],
+    ['--color-surface-sunken', '#1b1b19'],
+    ['--color-ink', '#f4f4ef'],
+    ['--color-ink-muted', '#a6a69c'],
     ['--color-ink-subtle', '#8a8a82'],
-    ['--color-border', '#e4e4dd'],
-    ['--color-border-strong', '#cfcfc6'],
-    ['--color-accent', '#111110'],
+    ['--color-border', '#2a2a25'],
+    ['--color-border-strong', '#3d3d36'],
+    ['--color-accent', '#f4f4ef'],
     ['--radius-sm', '4px'],
     ['--radius-md', '8px'],
     ['--radius-lg', '14px'],
@@ -54,6 +54,11 @@ describe('design tokens', () => {
 
   it('uses tabular lining numerals for prices', () => {
     expect(compact).toContain('font-variant-numeric: tabular-nums lining-nums;');
+  });
+
+  it('defines the scroll-reveal styles', () => {
+    expect(compact).toContain('@media (scripting: enabled)');
+    expect(compact).toContain('[data-reveal].is-revealed');
   });
 
   it('animates the individual scale property used by Tailwind v4', () => {

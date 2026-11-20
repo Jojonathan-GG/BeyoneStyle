@@ -21,7 +21,7 @@ export function Marquee({ items, variant = 'announcement', speed = 38, className
       className={cn(
         'marquee',
         variant === 'announcement'
-          ? 'bg-ink text-surface text-eyebrow font-medium'
+          ? 'border-b border-border bg-surface-muted text-ink text-eyebrow font-medium'
           : 'border-y border-border bg-surface text-ink font-display text-lg tracking-[-0.02em]',
         className,
       )}
