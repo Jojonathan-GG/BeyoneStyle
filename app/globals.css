@@ -1,1 +1,155 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f7f4;
+  --color-surface-sunken: #efefea;
+  --color-ink: #111110;
+  --color-ink-muted: #5c5c56;
+  --color-ink-subtle: #8a8a82;
+  --color-border: #e4e4dd;
+  --color-border-strong: #cfcfc6;
+  --color-accent: #111110;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  --shadow-soft: 0 1px 2px rgba(17, 17, 16, 0.04);
+
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-surface);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+}
+
+@utility text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 9vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+
+@utility text-display-l {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+}
+
+@utility text-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+@utility text-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+@utility text-h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+@utility text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+@utility text-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+@utility text-small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+@utility text-eyebrow {
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@utility nums {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+@utility transition-fast {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-out);
+}
+
+@utility transition-base {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-out);
+}
+
+@utility transition-slow {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: var(--duration-slow);
+  transition-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
