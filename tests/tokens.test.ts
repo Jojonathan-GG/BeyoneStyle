@@ -56,6 +56,12 @@ describe('design tokens', () => {
     expect(compact).toContain('font-variant-numeric: tabular-nums lining-nums;');
   });
 
+  it('animates the individual scale property used by Tailwind v4', () => {
+    expect(compact).toContain(
+      'transition-property: color, background-color, border-color, opacity, transform, translate, scale, rotate, box-shadow;',
+    );
+  });
+
   it('disables transitions under prefers-reduced-motion', () => {
     expect(compact).toContain('@media (prefers-reduced-motion: reduce)');
     expect(compact).toContain('transition-duration: 0.01ms !important');
