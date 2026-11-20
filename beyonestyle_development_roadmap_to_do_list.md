@@ -43,8 +43,8 @@ Tambahkan file aturan konteks untuk OpenCode di direktori utama proyek (`.openco
   - [ ] Set up path aliases (`@/*`).
   - [ ] Configure ESLint, Prettier, and Git hooks (Husky + lint-staged).
 - [ ] **1.2 Design Tokens & Theme Setup**
-  - [ ] Define BeyoneStyle color palette (Dark minimal background `#0d0d0d`, Neon accent `#c8ff00` / `#00f0ff`, Crisp monochrome text).
-  - [ ] Set up custom typography (e.g., Space Grotesk / Inter / Syne).
+  - [x] Define light-first editorial token palette (surfaces `#ffffff` / `#f7f7f4` / `#efefea`, ink `#111110`, hairline `#e4e4dd`); dark `#0d0d0d` + neon direction deferred.
+  - [x] Set up custom typography (Plus Jakarta Sans display / Inter text, tabular numerals for prices).
   - [ ] Install Shadcn UI base components (`Button`, `Dialog`, `Sheet`, `DropdownMenu`, `Drawer`).
 
 ---
@@ -176,7 +176,7 @@ Gunakan perintah prompt berikut di OpenCode saat memproses setiap fase:
 
 ## 📌 Status Summary
 
-- [ ] **Phase 1**: Setup & Infrastructure `[Not Started]`
+- [ ] **Phase 1**: Setup & Infrastructure `[In Progress]`
 - [ ] **Phase 2**: Database & Auth `[Not Started]`
 - [ ] **Phase 3**: Aesthetic UI Architecture `[Not Started]`
 - [ ] **Phase 4**: Product Catalog `[Not Started]`
