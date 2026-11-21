@@ -56,6 +56,11 @@ describe('design tokens', () => {
     expect(compact).toContain('font-variant-numeric: tabular-nums lining-nums;');
   });
 
+  it('defines a centered 16:9-friendly page shell', () => {
+    expect(compact).toContain('max-width: 90rem;');
+    expect(compact).toContain('margin-inline: auto;');
+  });
+
   it('defines the scroll-reveal styles', () => {
     expect(compact).toContain('@media (scripting: enabled)');
     expect(compact).toContain('[data-reveal].is-revealed');

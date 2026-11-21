@@ -167,3 +167,8 @@ points supersede the corresponding statements above:
   fixed bottom-left "N" back-to-top button that scales to 1.1 on hover.
 - **Demo page.** The demo now uses the dark palette and the reveal system on
   every section, including the type specimens, price rows, and product cards.
+- **16:9 stage.** A centered `90rem` shell with `1.5rem` / `2.5rem` gutters keeps
+  the editorial column balanced at 1600x900 and 1920x1080. The hero is roughly
+  `74svh` tall so the category strip and the next section peek into the first
+  screen, and every marquee group is at least `100vw` wide with `space-around`
+  distribution so the loop never opens a gap on wide displays.

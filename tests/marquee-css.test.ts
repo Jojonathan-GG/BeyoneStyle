@@ -20,6 +20,11 @@ describe('marquee css', () => {
     );
   });
 
+  it('fills wide 16:9 viewports so the loop never shows a gap', () => {
+    expect(compact).toContain('justify-content: space-around;');
+    expect(compact).toContain('min-width: 100vw;');
+  });
+
   it('keeps items at full opacity and brightens a hovered item', () => {
     expect(compact).not.toContain('opacity: 0.55');
     expect(compact).toContain('.marquee-item:hover');
