@@ -64,6 +64,7 @@ describe('design tokens', () => {
   it('defines the scroll-reveal styles', () => {
     expect(compact).toContain('@media (scripting: enabled)');
     expect(compact).toContain('[data-reveal].is-revealed');
+    expect(compact).toContain('[data-reveal][data-revealed="immediate"]');
   });
 
   it('animates the individual scale property used by Tailwind v4', () => {

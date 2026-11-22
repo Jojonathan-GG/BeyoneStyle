@@ -1,4 +1,4 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { RevealObserver } from '@/components/ui/reveal';
 
@@ -50,6 +50,41 @@ describe('RevealObserver', () => {
 
     const first = document.getElementById('a') as HTMLElement;
     observer.trigger(first);
+
+    expect(first).toHaveClass('is-revealed');
+    expect(observer.unobserve).toHaveBeenCalledWith(first);
+  });
+
+  it('reveals elements already in the viewport without waiting for the observer', () => {
+    document.body.innerHTML = '<div data-reveal id="a"></div><div data-reveal id="b"></div>';
+    const first = document.getElementById('a') as HTMLElement;
+    vi.spyOn(first, 'getBoundingClientRect').mockReturnValue({
+      top: 10,
+      bottom: 100,
+    } as DOMRect);
+
+    render(<RevealObserver />);
+
+    const observer = MockIntersectionObserver.instances[0];
+    expect(first).toHaveClass('is-revealed');
+    expect(first).toHaveAttribute('data-revealed', 'immediate');
+    expect(observer.observed).toEqual([document.getElementById('b')]);
+  });
+
+  it('reveals an element when scrolling brings it into view', () => {
+    document.body.innerHTML = '<div data-reveal id="a"></div>';
+    const first = document.getElementById('a') as HTMLElement;
+    const rect = vi
+      .spyOn(first, 'getBoundingClientRect')
+      .mockReturnValue({ top: 1200, bottom: 1300 } as DOMRect);
+
+    render(<RevealObserver />);
+
+    const observer = MockIntersectionObserver.instances[0];
+    expect(first).not.toHaveClass('is-revealed');
+
+    rect.mockReturnValue({ top: 100, bottom: 200 } as DOMRect);
+    fireEvent.scroll(window);
 
     expect(first).toHaveClass('is-revealed');
     expect(observer.unobserve).toHaveBeenCalledWith(first);

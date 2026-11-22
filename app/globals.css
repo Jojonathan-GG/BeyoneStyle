@@ -238,6 +238,10 @@
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
+
+  [data-reveal][data-revealed="immediate"] {
+    transition: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
