@@ -79,6 +79,16 @@ describe('design tokens', () => {
     expect(compact).toContain('[data-reveal][data-revealed="immediate"]');
   });
 
+  it('reserves the original scramble glyph so the headline cannot reflow', () => {
+    expect(compact).toContain('.scramble-char[data-scrambling="true"]::before');
+    expect(compact).toContain('content: attr(data-character);');
+  });
+
+  it('does not transition the marquee glow, which would stutter the moving track', () => {
+    expect(compact).toContain('text-shadow: 0 0 18px rgba(244, 244, 239, 0.45);');
+    expect(compact).not.toContain('text-shadow var(--duration-fast)');
+  });
+
   it('animates the individual scale property used by Tailwind v4', () => {
     expect(compact).toContain(
       'transition-property: color, background-color, border-color, opacity, transform, translate, scale, rotate, box-shadow;',

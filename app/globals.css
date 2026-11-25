@@ -252,6 +252,15 @@
     display: none;
   }
 
+  /*
+   * Keep the original glyph in the flow while a character scrambles, so the
+   * replacement glyph can never reflow the headline.
+   */
+  .scramble-char[data-scrambling="true"]::before {
+    content: attr(data-character);
+    visibility: hidden;
+  }
+
   .marquee-viewport {
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
@@ -286,9 +295,12 @@
     gap: 1rem;
     padding-inline: 1.25rem;
     white-space: nowrap;
-    transition:
-      color var(--duration-fast) var(--ease-out),
-      text-shadow var(--duration-fast) var(--ease-out);
+    /*
+     * Only colour transitions. Animating text-shadow on the moving track
+     * forces a layout on every frame of the transition and makes the
+     * marquee visibly stutter, so the glow is applied instantly instead.
+     */
+    transition: color var(--duration-fast) var(--ease-out);
   }
 
   .marquee-item:hover {

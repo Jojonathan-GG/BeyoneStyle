@@ -218,6 +218,14 @@ the scope that sits on top of the typography and motion foundation.
   disabled under `prefers-reduced-motion`.
 - The homepage applies it to the hero headline, not the whole string and not
   right-to-left.
+- Each character keeps the width of its original glyph while it scrambles. The
+  original is reserved with a hidden `::before` (`content: attr(data-character)`)
+  and the replacement is absolutely positioned over the same box, so swapping
+  glyphs can never reflow the line. Chrome measurement before the fix showed the
+  rest of the headline shifting by up to ~60px on every 32ms tick.
+- The marquee transitions only `color`. Its glow is applied instantly, because
+  transitioning `text-shadow` on the moving track forced a layout on every frame
+  of the 150ms transition (~27 layouts) and made the marquee visibly stutter.
 
 ### Reveal and routing
 

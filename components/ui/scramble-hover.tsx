@@ -110,11 +110,25 @@ export function ScrambleHover({
                       <span
                         key={key}
                         data-scramble-char
+                        data-character={character}
                         data-scrambling={isActive ? 'true' : undefined}
                         onPointerOver={() => scramble(key, character)}
-                        className={cn('inline-block', isActive && scrambledClassName)}
+                        className="scramble-char relative inline-block"
                       >
-                        {isActive ? active.character : character}
+                        {isActive ? (
+                          <span
+                            aria-hidden="true"
+                            data-scramble-overlay
+                            className={cn(
+                              'pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 whitespace-nowrap',
+                              scrambledClassName,
+                            )}
+                          >
+                            {active.character}
+                          </span>
+                        ) : (
+                          character
+                        )}
                       </span>
                     );
                   })}

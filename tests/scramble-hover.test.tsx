@@ -107,6 +107,24 @@ describe('ScrambleHover', () => {
 
     fireEvent.pointerOver(character as Element);
 
-    expect(character).toHaveClass('text-ink-muted');
+    const overlay = character?.querySelector('[data-scramble-overlay]');
+    expect(overlay).toHaveTextContent('Z');
+    expect(overlay).toHaveClass('text-ink-muted');
+    expect(character).not.toHaveClass('text-ink-muted');
+  });
+
+  it('keeps the original glyph in the layout so the line cannot reflow', () => {
+    const { container } = render(
+      <ScrambleHover text="AB" characters="Z" scrambleSpeed={10} maxIterations={4} />,
+    );
+    const character = container.querySelector('[data-scramble-char]');
+
+    fireEvent.pointerOver(character as Element);
+
+    expect(character).toHaveAttribute('data-character', 'A');
+    expect(character).toHaveAttribute('data-scrambling', 'true');
+    const overlay = character?.querySelector('[data-scramble-overlay]');
+    expect(overlay).toHaveTextContent('Z');
+    expect(overlay).toHaveClass('absolute');
   });
 });
