@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BrandMark } from '@/components/site/brand-mark';
 import { NewsletterForm } from '@/components/site/newsletter-form';
 
 const shopLinks = [
@@ -56,8 +57,8 @@ export function Footer() {
       <div className="shell pt-16 md:pt-20">
         <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
           <div>
-            <p className="text-eyebrow text-ink-subtle">BeyoneStyle</p>
-            <h2 className="text-display-l mt-4 max-w-xl text-balance">A letter, occasionally.</h2>
+            <BrandMark size="md" />
+            <h2 className="text-display-l mt-6 max-w-xl text-balance">A letter, occasionally.</h2>
             <p className="text-body text-ink-muted mt-4 max-w-md">
               Collection notes, atelier stories, and first access to new pieces. Written by hand,
               sent no more than once a month.

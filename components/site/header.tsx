@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { BrandMark } from '@/components/site/brand-mark';
 import { cn } from '@/lib/utils';
 
 const navigation = [
@@ -43,14 +44,12 @@ export function Header() {
       )}
     >
       <div className="shell flex h-16 items-center justify-between gap-4 md:h-20">
-        <Link href="/" aria-label="BeyoneStyle — home" className="group flex items-center gap-3">
-          <span
-            aria-hidden="true"
-            className="flex size-8 items-center justify-center border border-border-strong font-display text-sm transition-base group-hover:border-ink"
-          >
-            N
-          </span>
-          <span className="font-display text-lg tracking-[-0.03em]">BeyoneStyle</span>
+        <Link
+          href="/"
+          aria-label="BeyoneStyle — home"
+          className="group flex items-center transition-base hover:opacity-80"
+        >
+          <BrandMark />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
