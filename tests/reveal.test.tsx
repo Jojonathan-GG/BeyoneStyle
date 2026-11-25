@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, fireEvent, render, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { RevealObserver } from '@/components/ui/reveal';
 
@@ -88,6 +88,17 @@ describe('RevealObserver', () => {
 
     expect(first).toHaveClass('is-revealed');
     expect(observer.unobserve).toHaveBeenCalledWith(first);
+  });
+
+  it('observes content added after mount, such as a new route', async () => {
+    render(<RevealObserver />);
+    const observer = MockIntersectionObserver.instances[0];
+
+    const late = document.createElement('div');
+    late.setAttribute('data-reveal', '');
+    document.body.appendChild(late);
+
+    await waitFor(() => expect(observer.observed).toContain(late));
   });
 
   it('reveals everything immediately when reduced motion is requested', () => {

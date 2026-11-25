@@ -56,6 +56,18 @@ describe('design tokens', () => {
     expect(compact).toContain('font-variant-numeric: tabular-nums lining-nums;');
   });
 
+  it('defines the editorial link, button, field, and accordion primitives', () => {
+    for (const name of [
+      '.link-underline',
+      '.button-primary',
+      '.button-secondary',
+      '.field',
+      '.accordion summary',
+    ]) {
+      expect(compact).toContain(name);
+    }
+  });
+
   it('defines a centered 16:9-friendly page shell', () => {
     expect(compact).toContain('max-width: 90rem;');
     expect(compact).toContain('margin-inline: auto;');

@@ -172,3 +172,57 @@ points supersede the corresponding statements above:
   `74svh` tall so the category strip and the next section peek into the first
   screen, and every marquee group is at least `100vw` wide with `space-around`
   distribution so the loop never opens a gap on wide displays.
+
+## Editorial Storefront — 2026-11-25
+
+The demo page is now a finished editorial storefront shell. This addendum records
+the scope that sits on top of the typography and motion foundation.
+
+### Pages and shell
+
+- `/` is a long editorial homepage: announcement marquee, hero, category
+  marquee, Spring Edit grid, approach, lookbook, atelier process, journal, and a
+  private-fitting call to action.
+- `/shop` lists the four pieces by category; `/shop/[slug]` is a statically
+  generated product page with sizing, care, delivery, and related pieces.
+- `/about`, `/journal`, `/care`, `/privacy`, `/terms`, and a branded 404 complete
+  the navigation.
+- A sticky, blurred `Header` and a multi-column `Footer` wrap every page.
+  The footer carries the newsletter form, client-care links, and the oversized
+  wordmark. The form validates locally and confirms in place; there is no list
+  backend yet.
+- Product pages use a reservation flow (`ReservePiece`) that opens a pre-filled
+  email with the chosen size. There is deliberately no cart, checkout, auth, or
+  database in this pass; those remain Phase 2/6 work.
+
+### Imagery
+
+- The four supplied photographs in `img/` are imported as static assets and
+  rendered through `next/image` with `fill` and explicit `sizes`.
+- The hero images use `preload` plus `loading="eager"` because they are the LCP
+  candidate; everything below the fold stays lazy.
+- Images sit in `aspect-[4/5]`, `16/10`, or `16/9` frames with `object-cover`, so
+  the layout never shifts while the asset loads.
+
+### Per-letter scramble
+
+- `components/ui/scramble-hover.tsx` implements the requested interaction. The
+  text is split into lines, words, and characters. Only the character under the
+  pointer scrambles, through the configured `characters` set, for
+  `maxIterations`; it then returns to its original glyph.
+- API: `text`, `scrambleSpeed`, `maxIterations`, `useOriginalCharsOnly`,
+  `characters`, `className`, `scrambledClassName`. Newlines in `text` create
+  deliberate display lines.
+- The animated characters are `aria-hidden`; a visually hidden copy of the full
+  text keeps the headline readable to assistive technology. The interaction is
+  disabled under `prefers-reduced-motion`.
+- The homepage applies it to the hero headline, not the whole string and not
+  right-to-left.
+
+### Reveal and routing
+
+- `RevealObserver` now watches the DOM with a `MutationObserver` in addition to
+  the `IntersectionObserver`. The App Router keeps the layout mounted across
+  route changes, so new page content must be registered when it enters the DOM.
+- Above-the-fold content still paints synchronously; below-the-fold content
+  still fades and rises once.

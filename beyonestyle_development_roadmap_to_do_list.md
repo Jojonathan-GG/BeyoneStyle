@@ -66,36 +66,36 @@ Tambahkan file aturan konteks untuk OpenCode di direktori utama proyek (`.openco
 
 ### Phase 3: Core UI/UX & Layout Architecture (InfinityFX Aesthetic)
 - [ ] **3.1 Global Header & Navigation**
-  - [ ] Transparent Glassmorphism Navbar with blur effect (`backdrop-blur-md`).
+  - [x] Transparent Glassmorphism Navbar with blur effect (`backdrop-blur-md`).
   - [ ] Mega-menu / Flyout category dropdown.
   - [ ] Real-time Cart badge indicator & quick search bar trigger.
-  - [ ] Mobile responsive drawer menu with smooth transitions.
+  - [x] Mobile responsive drawer menu with smooth transitions.
 - [ ] **3.2 Dynamic Hero Section**
   - [ ] Full-screen aesthetic hero with high-res video backdrop / WebGL fluid animation.
   - [ ] Interactive product highlight carousel with smooth cursor drag.
-  - [ ] Micro-ticker banner for eco-friendly badges (Fair Trade, Organic, Recycled).
+  - [x] Micro-ticker banner for eco-friendly badges (Fair Trade, Organic, Recycled).
 - [ ] **3.3 Footer & Brand Statements**
-  - [ ] InfinityFX-style minimalist multi-column footer.
-  - [ ] Newsletter subscription form with instant validation & toast notification.
-  - [ ] Sustainability disclosures and compliance badges.
+  - [x] InfinityFX-style minimalist multi-column footer.
+  - [x] Newsletter subscription form with instant validation & toast notification.
+  - [x] Sustainability disclosures and compliance badges.
 
 ---
 
 ### Phase 4: Product Catalog & Discovery Engine
 - [ ] **4.1 Product Grid & Listing Page (`/shop`)**
-  - [ ] Responsive multi-column grid with hover image preview swapping.
-  - [ ] Lazy loading with Skeleton loaders.
+  - [x] Responsive multi-column grid with hover image scale.
+  - [x] Lazy loading through `next/image`.
   - [ ] Quick view modal preview for fast browsing.
 - [ ] **4.2 Filter & Sorting System**
   - [ ] Dynamic multi-facet filter panel (Category, Price range slider, Size, Color swatch, Sustainability tags).
   - [ ] URL State Synchronization (Search params using Next.js `useSearchParams`).
   - [ ] Sorting functionality (Newest, Price Low-to-High, Popularity).
-- [ ] **4.3 Product Detail Page (`/product/[slug]`)**
+- [ ] **4.3 Product Detail Page (`/shop/[slug]`)**
   - [ ] Image gallery with zoom preview and thumbnail slider.
   - [ ] Variant selector (Dynamic stock availability checker).
   - [ ] Interactive Size Guide modal.
-  - [ ] Accordion sections for Product Specs, Care Instructions, and Eco Impact Score.
-  - [ ] Related products recommendation engine slider.
+  - [x] Accordion sections for Details & care, Sizing, and Delivery.
+  - [x] Related products grid.
 
 ---
 
@@ -178,9 +178,15 @@ Gunakan perintah prompt berikut di OpenCode saat memproses setiap fase:
 
 - [ ] **Phase 1**: Setup & Infrastructure `[In Progress]`
 - [ ] **Phase 2**: Database & Auth `[Not Started]`
-- [ ] **Phase 3**: Aesthetic UI Architecture `[Not Started]`
-- [ ] **Phase 4**: Product Catalog `[Not Started]`
+- [ ] **Phase 3**: Aesthetic UI Architecture `[In Progress]`
+- [ ] **Phase 4**: Product Catalog `[In Progress]`
 - [ ] **Phase 5**: Animations & Lookbook `[Not Started]`
 - [ ] **Phase 6**: Cart & Stripe Payment `[Not Started]`
 - [ ] **Phase 7**: Admin Dashboard `[Not Started]`
 - [ ] **Phase 8**: SEO & Deployment `[Not Started]`
+
+> **2026-11-25 note**: the editorial storefront shell is live on
+> `feat/typography-motion` — home, shop, product detail, atelier, journal,
+> client care, privacy, terms, and 404, plus the per-letter scramble headline.
+> Product reservation is email-based for now; cart, auth, database, payments,
+> filters, and admin remain future phases.
